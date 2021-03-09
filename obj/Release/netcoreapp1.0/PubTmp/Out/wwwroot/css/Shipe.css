@@ -1,0 +1,7 @@
+﻿.circle {
+    border: 0.1em solid grey;
+    border-radius: 100%;
+    height: 2em;
+    width: 2em;
+    text-align: center;
+}

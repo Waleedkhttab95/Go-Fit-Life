@@ -1,0 +1,149 @@
+﻿@model Defult.viewmodel.CompletedPercentageViewModel
+@{
+
+    Layout = null;
+}
+<title>GoFitLife</title>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">         google.charts.load('current', { 'packages': ['corechart'] });       google.charts.setOnLoadCallback(drawChart);        function drawChart() {          var data = google.visualization.arrayToDataTable([           ['Type', 'Percentage'],           ['Daily Calorie', @Model.user.Calories],           ['Protien', @Model.user.Protin],           ['Carbohadryte', @Model.user.Carb],           ['Fat', @Model.user.Fat]         ]);          var options = {           title: 'My Daily Activities'         };          var chart = new google.visualization.PieChart(document.getElementById('piechart'));          chart.draw(data, options);       }     </script>
+
+
+
+
+<!---css--->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="/css/style.css" rel='stylesheet' type='text/css' />
+<link href="/css/our_style.css" rel='stylesheet' type='text/css' />
+<!---css--->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!---js--->
+<script src="/js/jquery-1.11.1.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+<!---js--->
+<!--web-fonts-->
+<link href="//fonts.googleapis.com/css?family=Ubuntu+Condensed" rel='stylesheet' type='text/css'>
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic" rel='stylesheet' type='text/css'>
+<link href="//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic" rel='stylesheet' type='text/css'>
+<!--//web-fonts-->
+<script src="/js/responsiveslides.min.js"></script>
+
+<!--JS for animate-->
+<link href="/css/animate.css" rel="stylesheet" type="text/css" media="all">
+<script src="/js/wow.min.js"></script>
+<script>
+      new WOW().init();
+</script>
+<!--//end-animate-->
+<!---header--->
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#42a5f5 ">
+    <div class="container">
+        <div class="navbar-header wow fadeInLeft animated animated" data-wow-delay="0.4s">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <h1><a class="navbar-brand" asp-action="UserIndex"><img src="/images/e.png" /> GoFitLife</a></h1>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" style="background-color:#42a5f5 ">
+            <ul class="nav navbar-nav navbar-right wow fadeInRight animated animated" data-wow-delay="0.4s" style="background-color:#42a5f5 ">
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Excercises" asp-action="Excercisers"><span data-letters="My Excercise">My Excercise</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-action="Foods"><span data-letters="My Nutrition">My Nutrition</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Excercises" asp-action="RandomExcercises"><span data-letters="Random Excercise">Random Excercise</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-action="Manage"><span data-letters="My Profile">My Profile</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-action="LogOut"><span data-letters="Logout">Logout</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-action="UserIndex"><span data-letters="Home">Home</span></a></li>
+
+
+
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+<body>
+    <div class="container" style="margin-bottom: 230px">
+        <div class="span3 well InnerContainerProfile">
+            <center>
+                <a href="#aboutModal" data-toggle="modal" data-target="#myModal"><img src="/@Model.user.imgPath" name="aboutme" width="140" height="140" class="img-circle"></a><br><br>
+                <h3>@Model.user.Name</h3>
+                <em>click on the face to see your progress</em>
+            </center>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title" id="myModalLabel">More About @Model.user.Name</h4>
+                    </div>  							 <!-- Modal Body-->
+                    <div class="modal-body">
+                        <center>
+                            <img src="/@Model.user.imgPath" name="aboutme" width="140" height="140" border="0" class="img-circle"><br><br>
+                            <h3 class="media-heading">@Model.user.Name </h3><br>
+                            <br>
+                            <span><strong>Program Type: </strong></span>
+                            <span class="label label-success">@Model.Program.P_name</span>
+                        </center>
+                        <hr>
+                        <center>
+                            <p class="text-left"><strong>Progression Charts: </strong><br></p>
+
+
+                            <div class="progress">
+                                @{
+                                    double x = 3.5714285714;
+                                    double y = @Model.Length * x;
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="@y" aria-valuemin="0" aria-valuemax="100" style="width: @y%;">
+                                            @Math.Round(y)%
+                                        </div>
+                                    </div>
+
+                                }
+                            </div>
+                            <hr>
+                            <div id="piechart" style="width: auto; height: auto;"></div>
+                            <br>
+                        </center>
+                    </div>
+                    <div class="modal-footer">
+                        <center>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Go Back</button>
+                            <a asp-action="Edit" class="btn btn-default">Edit Profile</a>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!--copy-->
+<div class="copy-section wow fadeInDownBig animated animated" data-wow-delay="0.4s">
+    <div class="container">
+        <div class="social-icons">
+            <a href="#"><i class="icon"></i></a>
+            <a href="#"><i class="icon1"></i></a>
+            <a href="#"><i class="icon2"></i></a>
+            <a href="#"><i class="icon3"></i></a>
+        </div>
+        <p>&copy; 2017 GoFitLife | Zaid & Waleed</p>
+    </div>
+</div>
+<!--copy-->

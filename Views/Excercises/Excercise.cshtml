@@ -1,0 +1,576 @@
+﻿
+
+@using Microsoft.AspNetCore.Http
+@model Defult.viewmodel.UserExcerciseModel
+
+<title>GoFitLife</title>
+<!---css--->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="/css/style.css" rel='stylesheet' type='text/css' />
+<link href="/css/our_style.css" rel='stylesheet' type='text/css' />
+<!---css--->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!---js--->
+<script src="/js/finishworkout.js"></script>
+
+<script src="/js/jquery-1.11.1.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+<!---js--->
+<!--web-fonts-->
+<link href="//fonts.googleapis.com/css?family=Ubuntu+Condensed" rel='stylesheet' type='text/css'>
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic" rel='stylesheet' type='text/css'>
+<link href="//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic" rel='stylesheet' type='text/css'>
+<!--//web-fonts-->
+<script src="/js/responsiveslides.min.js"></script>
+
+<!--JS for animate-->
+<link href="/css/animate.css" rel="stylesheet" type="text/css" media="all">
+<script src="/js/wow.min.js"></script>
+<script>
+    new WOW().init();
+
+</script>
+
+<!--//end-animate-->
+<!---header--->
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#42a5f5 ">
+    <div class="container">
+        <div class="navbar-header wow fadeInLeft animated animated" data-wow-delay="0.4s">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <h1><a class="navbar-brand" asp-controller="Home" asp-action="UserIndex"><img src="~/images/e.png" /> GoFitLife</a></h1>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" style="background-color:#42a5f5 ">
+            <ul class="nav navbar-nav navbar-right wow fadeInRight animated animated" data-wow-delay="0.4s" style="background-color:#42a5f5 ">
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Excercises" asp-action="Excercisers"><span data-letters="My Excercise">My Excercise</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Home" asp-action="Foods"><span data-letters="My Nutrition">My Nutrition</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Excercises" asp-action="RandomExcercises"><span data-letters="Random Excercise">Random Excercise</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Home" asp-action="Manage"><span data-letters="My Profile">My Profile</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Home" asp-action="LogOut"><span data-letters="Logout">Logout</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Home" asp-action="UserIndex"><span data-letters="Home">Home</span></a></li>
+
+
+
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+<body class="bccol">
+
+    <div class="container InnerContainer" style="margin-top: -15px;">
+        @{
+            var prog = Context.Session.GetInt32("Prog");
+            if (prog == 1)
+            {
+                <div class="container">
+                    <h2 class="month1">First Month</h2>
+                    <div class="panel-group" id="firstmonth">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#firstmonth" href="#collapse1"><h4>First Week</h4></a>
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse in">
+                                <div class="panel-body bccol">
+                                    <div class="content1">
+                                        <div class="row">
+                                            @{
+                                                int zz = 0;
+                                                for (int i = 0; i <= 6; i++)
+                                                {
+
+                                                    if (Model.Com.Length != 0)
+                                                    {
+                                                        if (Model.ProgramWorkouts[i].wId == Model.Com[zz].PW_WId && Model.Com[zz].Completed == true)
+                                                        {
+
+                                                            <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                                @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                                <br />
+
+                                                                <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1, Completed = true})" class="btn btn-success completedBu"><span>Completed!</span></a>
+                                                            </div>
+                                                            if (Model.Com.Length - 1 > zz)
+                                                            {
+                                                                zz++;
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                                @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                                <br />
+
+                                                                <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1, Completed = false})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                            </div>
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                            @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                            <br />
+
+                                                            <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1, Completed = false})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                        </div>
+                                                    }
+                                     
+
+
+                                                }
+
+                                            }
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#firstmonth" href="#collapse2"><h4>Second Week</h4></a>
+                                </h4>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse">
+                                <div class="panel-body bccol">
+                                    <div>
+                                        <div class="row">
+                                            @for (int i = 7; i <= 13; i++)
+                                            {
+
+                                                if (Model.Com.Length != 0)
+                                                {
+                                                    if (Model.ProgramWorkouts[i].wId == Model.Com[zz].PW_WId && Model.Com[zz].Completed == true)
+                                                    {
+
+                                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                            @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                            <br />
+
+                                                            <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1})" class="btn btn-success completedBu"><span>Completed!</span></a>
+                                                        </div>
+                                                        if (Model.Com.Length - 1 > zz)
+                                                        {
+                                                            zz++;
+                                                        }
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                            @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                            <br />
+
+                                                            <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1, Completed = false})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                        </div>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                        @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                        <br />
+
+                                                        <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                    </div>
+                                                }
+
+
+
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#firstmonth" href="#collapse3"><h4>Third Week</h4></a>
+                                </h4>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse">
+                                <div class="panel-body bccol">
+                                    <div>
+                                        <div class="row">
+                                            @for (int i = 14; i <= 20; i++)
+                                            {
+
+                                                if (Model.Com.Length != 0)
+                                                {
+                                                    if (Model.ProgramWorkouts[i].wId == Model.Com[zz].PW_WId && Model.Com[zz].Completed == true)
+                                                    {
+
+                                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                            @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                            <br />
+
+                                                            <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1})" class="btn btn-success completedBu"><span>Completed!</span></a>
+                                                        </div>
+                                                        if (Model.Com.Length - 1 > zz)
+                                                        {
+                                                            zz++;
+                                                        }
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                            @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                            <br />
+
+                                                            <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1, Completed = false})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                        </div>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                        @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                        <br />
+
+                                                        <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                    </div>
+                                                }
+
+
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#firstmonth" href="#collapse4"><h4>Fourth Week</h4></a>
+                                </h4>
+                            </div>
+                            <div id="collapse4" class="panel-collapse collapse">
+                                <div class="panel-body bccol">
+                                    <div>
+                                        <div class="row">
+                                            @for (int i = 21; i <= 27; i++)
+                                            {
+
+                                                if (Model.Com.Length != 0)
+                                                {
+                                                    if (Model.ProgramWorkouts[i].wId == Model.Com[zz].PW_WId && Model.Com[zz].Completed == true)
+                                                    {
+
+                                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                            @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                            <br />
+
+                                                            <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1})" class="btn btn-success completedBu"><span>Completed!</span></a>
+                                                        </div>
+                                                        if (Model.Com.Length - 1 > zz)
+                                                        {
+                                                            zz++;
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                            @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                            <br />
+
+                                                            <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1, Completed = false})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                        </div>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                        @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                        <br />
+
+                                                        <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                    </div>
+                                                }
+
+
+
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                }
+                                                else if (prog == 2)
+                                                {
+                                                    <div class="container">
+                                                        <h2 class="month1">First Month</h2>
+                                                        <div class="panel-group" id="firstmonth">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading">
+                                                                    <h4 class="panel-title">
+                                                                        <a data-toggle="collapse" data-parent="#firstmonth" href="#collapse1"><h4>First Week</h4></a>
+                                                                    </h4>
+                                                                </div>
+                                                                <div id="collapse1" class="panel-collapse collapse in">
+                                                                    <div class="panel-body bccol">
+                                                                        <div class="content1">
+                                                                            <div class="row">
+                                                                                @{
+                                                                                    int zz = 0;
+                                                                                    for (int i = 28; i <= 34; i++)
+                                                                                    {
+                                                                                        if (Model.Com.Length != 0)
+                                                                                        {
+                                                                                            if (Model.ProgramWorkouts[i].wId == Model.Com[zz].PW_WId && Model.Com[zz].Completed == true)
+                                                                                            {
+
+                                                                                                <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                                                                    @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                                                                    <br />
+
+                                                                                                    <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1, Completed = true})" class="btn btn-success completedBu"><span>Completed!</span></a>
+                                                                                                </div>
+                                                                                                if (Model.Com.Length - 1 > zz)
+                                                                                                {
+                                                                                                    zz++;
+                                                                                                }
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                                                                    @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                                                                    <br />
+
+                                                                                                    <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1, Completed = false})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                                                                </div>
+                                                                                            }
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                                                                @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                                                                <br />
+
+                                                                                                <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1, Completed = false})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                                                            </div>
+                                                                                        }
+
+                                                                                    }
+
+                                                                                }
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading">
+                                                                    <h4 class="panel-title">
+                                                                        <a data-toggle="collapse" data-parent="#firstmonth" href="#collapse2"><h4>Second Week</h4></a>
+                                                                    </h4>
+                                                                </div>
+                                                                <div id="collapse2" class="panel-collapse collapse">
+                                                                    <div class="panel-body bccol">
+                                                                        <div>
+                                                                            <div class="row">
+                                                                                @for (int i = 35; i <= 41; i++)
+                                                                                {
+
+                                                                                    if (Model.Com.Length != 0)
+                                                                                    {
+                                                                                        if (Model.ProgramWorkouts[i].wId == Model.Com[zz].PW_WId && Model.Com[zz].Completed == true)
+                                                                                        {
+
+                                                                                            <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                                                                @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                                                                <br />
+
+                                                                                                <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1})" class="btn btn-success completedBu"><span>Completed!</span></a>
+                                                                                            </div>
+                                                                                            if (Model.Com.Length - 1 > zz)
+                                                                                            {
+                                                                                                zz++;
+                                                                                            }
+
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                                                                @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                                                                <br />
+
+                                                                                                <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1, Completed = false})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                                                            </div>
+                                                                                        }
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                                                            @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                                                            <br />
+
+                                                                                            <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                                                        </div>
+                                                                                    }
+
+
+
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading">
+                                                                    <h4 class="panel-title">
+                                                                        <a data-toggle="collapse" data-parent="#firstmonth" href="#collapse3"><h4>Third Week</h4></a>
+                                                                    </h4>
+                                                                </div>
+                                                                <div id="collapse3" class="panel-collapse collapse">
+                                                                    <div class="panel-body bccol">
+                                                                        <div>
+                                                                            <div class="row">
+                                                                                @for (int i = 42; i <= 48; i++)
+                                                                                {
+
+                                                                                    if (Model.Com.Length != 0)
+                                                                                    {
+                                                                                        if (Model.ProgramWorkouts[i].wId == Model.Com[zz].PW_WId && Model.Com[zz].Completed == true)
+                                                                                        {
+
+                                                                                            <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                                                                @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                                                                <br />
+
+                                                                                                <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1})" class="btn btn-success completedBu"><span>Completed!</span></a>
+                                                                                            </div>
+                                                                                            if (Model.Com.Length - 1 > zz)
+                                                                                            {
+                                                                                                zz++;
+                                                                                            }
+
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                                                                @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                                                                <br />
+
+                                                                                                <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1, Completed = false})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                                                            </div>
+                                                                                        }
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                                                            @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                                                            <br />
+
+                                                                                            <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                                                        </div>
+                                                                                    }
+
+
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading">
+                                                                    <h4 class="panel-title">
+                                                                        <a data-toggle="collapse" data-parent="#firstmonth" href="#collapse4"><h4>Fourth Week</h4></a>
+                                                                    </h4>
+                                                                </div>
+                                                                <div id="collapse4" class="panel-collapse collapse">
+                                                                    <div class="panel-body bccol">
+                                                                        <div>
+                                                                            <div class="row">
+                                                                                @for (int i = 49; i <= 55; i++)
+                                                                                {
+
+                                                                                    if (Model.Com.Length != 0)
+                                                                                    {
+                                                                                        if (Model.ProgramWorkouts[i].wId == Model.Com[zz].PW_WId && Model.Com[i].Completed == true)
+                                                                                        {
+
+                                                                                            <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                                                                @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                                                                <br />
+
+                                                                                                <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1})" class="btn btn-success completedBu"><span>Completed!</span></a>
+                                                                                            </div>
+                                                                                            if (Model.Com.Length - 1 > zz)
+                                                                                            {
+                                                                                                zz++;
+                                                                                            }
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                                                                @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                                                                <br />
+
+                                                                                                <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1, Completed = false})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                                                            </div>
+                                                                                        }
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6  dayBox1">
+                                                                                            @Html.DisplayFor(item => Model.ProgramWorkouts[i].wName)
+                                                                                            <br />
+
+                                                                                            <div class="hr"></div>@Html.DisplayFor(item => Model.ProgramWorkouts[i].wArea)<br /> <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.ProgramWorkouts[i].wId, wnum = 1})" class="btn btn-default btn-block"><span>Start</span></a>
+                                                                                        </div>
+                                                                                    }
+
+
+
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                                                    }
+
+        }
+        <div class="hr"></div>
+    </div>
+
+
+</body>
+<!--copy-->
+<div class="copy-section wow fadeInDownBig animated animated" data-wow-delay="0.4s" style="margin-top: 80px;">
+    <div class="container">
+        <div class="social-icons">
+            <a href="#"><i class="icon"></i></a>
+            <a href="#"><i class="icon1"></i></a>
+            <a href="#"><i class="icon2"></i></a>
+            <a href="#"><i class="icon3"></i></a>
+        </div>
+        <p>&copy; 2017 GoFitLife | Zaid & Waleed</p>
+    </div>
+</div>
+<!--copy-->

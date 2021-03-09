@@ -1,0 +1,175 @@
+﻿
+
+
+@model Defult.viewmodel.Traineeviewmodel
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GoFitLife</title>
+    <meta charset="UTF-8">
+    <title>Sign-Up/Login Form</title>
+    <link href="http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600" rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <link rel="stylesheet" href="/css/style2.css">
+
+</head>
+<body>
+    <div class="form">
+
+
+        @*    Bar Tabs*@
+        <ul class="tab-group">
+            <li class="tab active"><a href="#login">Log In</a></li>
+            <li class="tab"><a href="#signup">Sign Up</a></li>
+
+        </ul>
+
+
+
+        @*   Login*@
+        <div class="tab-content">
+            <div id="login">
+                <h1>Welcome Back!</h1>
+
+                <p style="color: red"> @ViewData["msgl"] </p>
+                <form asp-action="Login" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="field-wrap">
+                        <label>
+                            Email Address<span class="req">*</span>
+                        </label>
+                        <input asp-for="User.Email" type="email" required autocomplete="off" />
+                    </div>
+
+                    <div class="field-wrap">
+                        <label>
+                            Password<span class="req">*</span>
+                        </label>
+                        <input asp-for="User.Password" type="password" required autocomplete="off" />
+                    </div>
+
+
+
+                    <button class="button button-block">Log In</button>
+
+                </form>
+            </div>
+
+
+            @*     Sign Up*@
+            <div id="signup">
+                <h1>Sign Up For Free</h1>
+
+                <form asp-action="Save" Method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="top-row">
+                        <div class="field-wrap">
+                            <label>
+                                Email<span class="req">*</span>
+                            </label>
+                            <input asp-for="User.Email" type="email" required autocomplete="off" />
+                            <p style="color: red"> @ViewData["msg"] </p>
+                            <span asp-validation-for="User.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="field-wrap">
+                            <label>
+                                Name<span class="req">*</span>
+                            </label>
+                            <input asp-for="User.Name" type="text" required autocomplete="off" />
+                            <span asp-validation-for="User.Name" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                    <div class="field-wrap">
+                        <label>
+                            Password<span class="req">*</span>
+                        </label>
+                        <input asp-for="User.Password" type="password" required autocomplete="off" />
+                        <span asp-validation-for="User.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="field-wrap">
+                        <label>
+                            Confirm Password<span class="req">*</span>
+                        </label>
+                        <input asp-for="User.Repassword" type="password" required autocomplete="off" />
+                        <span asp-validation-for="User.Repassword" class="text-danger"></span>
+                    </div>
+                   
+                    
+
+                    <div class="field-wrap">
+                        <label>
+                            Weight(Kg)<span class="req">*</span>
+                        </label>
+                        <input asp-for="User.Weight" type="number" required autocomplete="off" />
+                        <span asp-validation-for="User.Weight" class="text-danger"></span>
+                    </div>
+                    <div class="field-wrap">
+                        <label>
+                            Height<span class="req">*</span>
+                        </label>
+                        <input asp-for="User.Height" type="number" required autocomplete="off" />
+                        <span asp-validation-for="User.Height" class="text-danger"></span>
+                    </div>
+                    <div class="field-wrap">
+                        <label>
+                            Age<span class="req">*</span>
+                        </label>
+                        <input asp-for="User.Age" type="number" required autocomplete="off" />
+                        <span asp-validation-for="User.Age" class="text-danger"></span>
+                    </div>
+                    <div class="field-wrap">
+                        <label>
+                            goal weight<span class="req">*</span>
+                        </label>
+                        <input asp-for="User.GoalWieght" type="number" required autocomplete="off" />
+                        <span asp-validation-for="User.GoalWieght" class="text-danger"></span>
+                    </div>
+
+                    <div class="field-wrap">
+                        <label>
+                            Goal <span class="req">*</span>
+                        </label>
+                        <br />
+                        <div class="col-sm-10" style="margin-top: 40px">
+
+                            @Html.DropDownListFor(m => m.User.ProgramsId, new SelectList(Model.Programs, "Id", "P_name"), "Select Your Goal")
+                            <span asp-validation-for="User.ProgramsId" required class="text-danger"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="field-wrap">
+
+                        <label>
+                            Profile Picture <span class="req">*</span>
+                        </label>
+                        <br />
+                        <div class="col-sm-10" style="margin-top: 40px">
+
+                            <input required type="file" name="files" multiple />
+
+                        </div>
+
+                    </div>
+                    <button type="submit" class="button button-block">Get Started</button>
+
+                </form>
+            </div>
+
+
+        </div><!-- tab-content -->
+
+    </div> <!-- /form -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+</html>

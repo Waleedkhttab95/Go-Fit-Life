@@ -1,0 +1,9 @@
+C:\Users\Zaid\Desktop\Defult\src\Defult\bin\Release\netcoreapp1.0\Defult.deps.json
+C:\Users\Zaid\Desktop\Defult\src\Defult\bin\Release\netcoreapp1.0\Defult.runtimeconfig.json
+C:\Users\Zaid\Desktop\Defult\src\Defult\bin\Release\netcoreapp1.0\Defult.runtimeconfig.dev.json
+C:\Users\Zaid\Desktop\Defult\src\Defult\bin\Release\netcoreapp1.0\Defult.dll
+C:\Users\Zaid\Desktop\Defult\src\Defult\bin\Release\netcoreapp1.0\Defult.pdb
+C:\Users\Zaid\Desktop\Defult\src\Defult\obj\Release\netcoreapp1.0\Defult.csprojResolveAssemblyReference.cache
+C:\Users\Zaid\Desktop\Defult\src\Defult\obj\Release\netcoreapp1.0\Defult.AssemblyInfo.cs
+C:\Users\Zaid\Desktop\Defult\src\Defult\obj\Release\netcoreapp1.0\Defult.dll
+C:\Users\Zaid\Desktop\Defult\src\Defult\obj\Release\netcoreapp1.0\Defult.pdb

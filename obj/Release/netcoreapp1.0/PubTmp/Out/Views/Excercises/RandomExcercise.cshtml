@@ -1,0 +1,242 @@
+﻿
+@{
+    Layout = null;
+}
+@model Defult.viewmodel.CategoryItemViewModel
+<!DOCTYPE html>
+
+
+<head>
+    <title>GoFitLife</title>
+    <!---css--->
+    <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="/css/our_style.css" rel='stylesheet' type='text/css' />
+
+    <!---css--->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Flat Gym  Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!---js--->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!---js--->
+    <!--web-fonts-->
+    <link href="//fonts.googleapis.com/css?family=Ubuntu+Condensed" rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+    <!--//web-fonts-->
+    <script src="/js/responsiveslides.min.js"></script>
+    <script>
+        $(function () {
+            $("#slider").responsiveSlides({
+                auto: true,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+                pager: true,
+            });
+        });
+    </script>
+    <!--JS for animate-->
+    <link href="/css/animate.css" rel="stylesheet" type="text/css" media="all">
+    <script src="/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!--//end-animate-->
+
+</head>
+<body class="bccol">
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#42a5f5 ">
+        <div class="container">
+            <div class="navbar-header wow fadeInLeft animated animated" data-wow-delay="0.4s">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h1><a class="navbar-brand" asp-controller="Home" asp-action="UserIndex"><img src="/images/e.png" /> GoFitLife</a></h1>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse" style="background-color:#42a5f5 ">
+                <ul class="nav navbar-nav navbar-right wow fadeInRight animated animated" data-wow-delay="0.4s" style="background-color:#42a5f5 ">
+                    <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Excercises" asp-action="Excercisers"><span data-letters="My Excercise">My Excercise</span></a></li>
+                    <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Home" asp-action="Foods"><span data-letters="My Nutrition">My Nutrition</span></a></li>
+                    <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Excercises" asp-action="RandomExcercises"><span data-letters="Random Excercise">Random Excercise</span></a></li>
+                    <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Home" asp-action="Manage"><span data-letters="My Profile">My Profile</span></a></li>
+                    <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Home" asp-action="LogOut"><span data-letters="Logout">Logout</span></a></li>
+                    <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Home" asp-action="UserIndex"><span data-letters="Home">Home</span></a></li>
+
+
+
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div class="container InnerContainer" style="  margin-top: 120px;">
+        <div class="container">
+
+
+            <div class="content1">
+                <div class="row">
+                    <!--  Body Parts -->
+
+                    <div class="col-md-3 train-grid wow fadeInRight animated animated" data-wow-delay="0.4s">
+                        <div class="train-top hvr-bounce-to-right mg">
+                            <div class="train-img">
+                                <img src="~/images/e8.png" />
+                            </div>
+                            <h4>Abdominals</h4>
+                            <p class="txt">Is the region occupied by the abdomen is termed the abdominal cavity</p>
+                            <a class="btn btn-default btn-block" style="background: gray !important; font-size: 17px;  color: white;" href="@Url.Action("ListRandomExc","Excercises", new { BodyPartid = 1})">Show</a>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 train-grid wow fadeInRight animated animated" data-wow-delay="0.4s">
+                        <div class="train-top hvr-bounce-to-right mg">
+                            <div class="train-img">
+                                <img src="~/images/e3.png" />
+                            </div>
+                            <h4>Biceps</h4>
+                            <p class="txt">Biceps lies on the upper arm between the shoulder and the elbow</p>
+                            <a class="btn btn-default btn-block" style="background: gray !important; font-size: 17px;  color: white;" href="@Url.Action("ListRandomExc","Excercises", new { BodyPartid = 2})">Show</a>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 train-grid wow fadeInRight animated animated" data-wow-delay="0.4s">
+                        <div class="train-top hvr-bounce-to-right mg">
+                            <div class="train-img">
+                                <img src="~/images/e5.png" />
+                            </div>
+                            <h4>Calves</h4>
+                            <p class="txt">Calves (leg) Is the back portion of the lower leg in human anatomy</p>
+                            <a class="btn btn-default btn-block" style="background: gray !important; font-size: 17px;  color: white;" href="@Url.Action("ListRandomExc","Excercises", new { BodyPartid = 3})">Show</a>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 train-grid wow fadeInRight animated animated" data-wow-delay="0.4s">
+                        <div class="train-top hvr-bounce-to-right mg">
+                            <div class="train-img">
+                                <img src="~/images/e3.png" />
+                            </div>
+                            <h4>Chest</h4>
+                            <p class="txt">It's located between neck and abdomen,including thoracic cavity</p>
+                            <a class="btn btn-default btn-block" style="background: gray !important; font-size: 17px;  color: white;" href="@Url.Action("ListRandomExc","Excercises", new { BodyPartid = 4})">Show</a>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 train-grid wow fadeInRight animated animated" data-wow-delay="0.4s">
+                        <div class="train-top hvr-bounce-to-right mg">
+                            <div class="train-img">
+                                <img src="~/images/e2.png" />
+                            </div>
+                            <h4>Forearms</h4>
+                            <p class="txt">The upper limb between the elbow and the wrist.</p>
+                            <a class="btn btn-default btn-block" style="background: gray !important; font-size: 17px;  color: white;" href="@Url.Action("ListRandomExc","Excercises", new { BodyPartid = 5})">Show</a>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 train-grid wow fadeInRight animated animated" data-wow-delay="0.4s">
+                        <div class="train-top hvr-bounce-to-right mg">
+                            <div class="train-img">
+                                <img src="~/images/e6.png" />
+                            </div>
+                            <h4>Hamstrings</h4>
+                            <p class="txt">Is the single large tendon found behind the knee or comparable area.</p>
+                            <a class="btn btn-default btn-block" style="background: gray !important; font-size: 17px;  color: white;" href="@Url.Action("ListRandomExc","Excercises", new { BodyPartid = 6})">Show</a>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 train-grid wow fadeInRight animated animated" data-wow-delay="0.4s">
+                        <div class="train-top hvr-bounce-to-right mg">
+                            <div class="train-img">
+                                <img src="~/images/e5.png" />
+                            </div>
+                            <h4>Lats</h4>
+                            <p class="txt">The basic monetary unit of Latvia, equal to 100 santims</p>
+                            <a class="btn btn-default btn-block" style="background: gray !important; font-size: 17px;  color: white;" href="@Url.Action("ListRandomExc","Excercises", new { BodyPartid = 7})">Show</a>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 train-grid wow fadeInRight animated animated" data-wow-delay="0.4s">
+                        <div class="train-top hvr-bounce-to-right mg">
+                            <div class="train-img">
+                                <img src="~/images/e1.png" />
+                            </div>
+                            <h4>Middle Back</h4>
+                            <p class="txt">It lies between shoulders.</p>
+                            <a class="btn btn-default btn-block" style="background: gray !important; font-size: 17px;  color: white;" href="@Url.Action("ListRandomExc","Excercises", new { BodyPartid = 8})">Show</a>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 train-grid wow fadeInRight animated animated" data-wow-delay="0.4s">
+                        <div class="train-top hvr-bounce-to-right mg">
+                            <div class="train-img">
+                                <img src="~/images/e7.png" />
+                            </div>
+                            <h4>Quadriceps</h4>
+                            <p class="txt">The large muscle at the front of the thigh, which is divided into four distinct portions and acts to extend the leg.</p>
+                            <a class="btn btn-default btn-block" style="background: gray !important; font-size: 17px;  color: white;" href="@Url.Action("ListRandomExc","Excercises", new { BodyPartid = 9})">Show</a>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 train-grid wow fadeInRight animated animated" data-wow-delay="0.4s">
+                        <div class="train-top hvr-bounce-to-right mg">
+                            <div class="train-img">
+                                <img src="~/images/e2.png" />
+                            </div>
+                            <h4>Shoulders</h4>
+                            <p class="txt">The upper joint of each of a person's arms and the part of the body between this and the neck</p>
+                            <a class="btn btn-default btn-block" style="background: gray !important; font-size: 17px;  color: white;" href="@Url.Action("ListRandomExc","Excercises", new { BodyPartid = 10})">Show</a>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3 train-grid wow fadeInRight animated animated" data-wow-delay="0.4s">
+                        <div class="train-top hvr-bounce-to-right mg">
+                            <div class="train-img">
+                                <img src="~/images/e2.png" />
+                            </div>
+                            <h4>Triceps</h4>
+                            <p class="txt">Any of several muscles having three points of attachment at one end</p>
+                            <a class="btn btn-default btn-block" style="background: gray !important; font-size: 17px;  color: white;" href="@Url.Action("ListRandomExc","Excercises", new { BodyPartid = 11})">Show</a>
+                        </div>
+                    </div>
+
+
+                    <!--  Body Parts -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+<!--copy-->
+<div class="copy-section wow fadeInDownBig animated animated" data-wow-delay="0.4s">
+    <div class="container">
+        <div class="social-icons">
+            <a href="#"><i class="icon"></i></a>
+            <a href="#"><i class="icon1"></i></a>
+            <a href="#"><i class="icon2"></i></a>
+            <a href="#"><i class="icon3"></i></a>
+        </div>
+        <p>&copy; 2017 GoFitLife | Zaid & Waleed</p>
+  </div>
+</div>
+<!--copy-->
+

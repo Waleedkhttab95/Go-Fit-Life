@@ -1,0 +1,125 @@
+﻿.dayBox1 {
+    font-size: 12px;
+    background-color: #424242;
+    border-radius: 5px;
+    height: 150px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 12px;
+}
+
+.InnerContainer {
+    margin-top: 70px;
+    font-family: Ubuntu;
+}
+ 
+.month1 {
+    margin-top: 150px;
+    margin-bottom: 30px;
+    font-family: Ubuntu;
+}
+
+.hr {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #EEEEEE -moz-use-text-color #FFFFFF;
+    border-style: solid none;
+    border-width: 1px 0;
+    margin: 18px 0;
+}
+ 
+.content1 {
+    margin: 15px;
+    font-family: Ubuntu;
+}
+
+
+.InnerContainerProfile {
+    margin-top: 100px;
+}
+
+.foodsstyle {
+    width: 700px;
+    height: 200px;
+    font-size: 50px;
+    align-content: center;
+}
+
+.stepimg {
+    border-radius: 10px;
+}
+
+.workoutdesc {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.mm {
+    font-family: Ubuntu;
+    margin-bottom: 20px;
+}
+
+.titledesc {
+    font-family: Ubuntu !important;
+}
+
+.iconfinish {
+    text-align: center;
+    font-family: Ubuntu;
+    margin-top: 20px;
+}
+
+.InnerContainerWorkoutpage {
+    margin-top: -15px;
+}
+
+.descc {
+    font-family: Ubuntu;
+    font-size: 16px;
+}
+
+.finishbu {
+    background-color: #00e676 !important;
+    border-radius: 11px;
+    font-size: 22px;
+}
+
+.icon-success {
+    color: #00e676;
+}
+
+.bccol {
+    background-color: #eeeeee;
+}
+
+.mg {
+    margin-bottom: 20px;
+    height: 320px;
+}
+
+.txt {
+    width: 200px;
+    height: 100px;
+
+}
+.txtListExc {
+    font-size: 20px;
+}
+
+.completedBu {
+    margin-top: 15px;
+    width: 100%;
+    border: 1px;
+    height: 35px;
+}
+
+.savebtn {
+    width: 100%;
+    border-radius: 5px;
+    font-size: 17px;
+}

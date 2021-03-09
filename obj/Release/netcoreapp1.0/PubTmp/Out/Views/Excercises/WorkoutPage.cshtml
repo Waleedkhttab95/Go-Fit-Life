@@ -1,0 +1,233 @@
+﻿
+
+@using Microsoft.AspNetCore.Http
+@model Defult.viewmodel.ExcWorkModel
+<title>GoFitLife</title>
+<!---css--->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="/css/style.css" rel='stylesheet' type='text/css' />
+<link href="/css/our_style.css" rel='stylesheet' type='text/css' />
+<!---css--->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!---js--->
+<script src="/js/finishworkout.js"></script>
+<script src="/js/jquery-1.11.1.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+<!---js--->
+    <!--web-fonts-->
+<link href="//fonts.googleapis.com/css?family=Ubuntu+Condensed" rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+<!--//web-fonts-->
+<script src="/js/responsiveslides.min.js"></script>
+
+<!--JS for animate-->
+<link href="/css/animate.css" rel="stylesheet" type="text/css" media="all">
+<script src="/js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+
+<!--//end-animate-->
+<!---header--->
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#42a5f5 ">
+    <div class="container">
+        <div class="navbar-header wow fadeInLeft animated animated" data-wow-delay="0.4s">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <h1><a class="navbar-brand" asp-controller="Home" asp-action="UserIndex"><img src="/images/e.png" /> GoFitLife</a></h1>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" style="background-color:#42a5f5 ">
+            <ul class="nav navbar-nav navbar-right wow fadeInRight animated animated" data-wow-delay="0.4s" style="background-color:#42a5f5 ">
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Excercises" asp-action="Excercisers"><span data-letters="My Excercise">My Excercise</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Home" asp-action="Foods"><span data-letters="My Nutrition">My Nutrition</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Excercises" asp-action="RandomExcercises"><span data-letters="Random Excercise">Random Excercise</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Home" asp-action="Manage"><span data-letters="My Profile">My Profile</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Home" asp-action="LogOut"><span data-letters="Logout">Logout</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Home" asp-action="UserIndex"><span data-letters="Home">Home</span></a></li>
+
+
+
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+
+<body class="bccol">
+    @if (Model.Exc.ExName == "Rest")
+    {
+    
+   
+    <div class="container" style="margin-top: 130px;">
+        <div class="container">
+
+
+            <div class="content1 InnerContainerWorkoutpage">
+                <div class="row">
+
+                    <!-- Description of workout -->
+                    <div class="container-fluid text-left">
+                        <h1 class="titledesc">Details</h1><br>
+                        <div class="row">
+                            <h3 class="titledesc">This Is A Rest Day!<br />Enjoy!</h3>
+                            <br />
+                                <div class="row">
+                                    <div class="row col-lg-4">
+                                        <img src="@Url.Content(Model.Exc.ExStepOne)" class="img-responsive" style="width: 100%; border-radius: 10px;" alt="Image">
+
+                                    </div>
+
+                                </div>
+                                    <div class="row">
+                                        <h2 class="iconfinish">
+                                            Click to @if (Model.wnum == Model.TotalExc)
+                                            {<span> finish workout for today!</span>}
+                                            else
+                                            {<span> see next excercise!</span>}
+                                        </h2>
+  
+                                            <a href="@Url.Action("CompletedWorkout", "Excercises", new {wid = Model.wId})" class="btn btn-primary btn-block finishbu" id="finish">Finish</a>
+
+                        
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+    }
+
+
+
+
+    else{ 
+<div class="container" style="margin-top: 130px;">
+    <div class="container">
+
+
+        <div class="content1 InnerContainerWorkoutpage">
+            <div class="row">
+
+                <!-- Description of workout -->
+                <div class="container-fluid text-left">
+                    <h1 class="titledesc">Details</h1><br>
+                    <div class="row">
+                        @if (Model.Exc.ExName == "Rest")
+                        {
+                            <h2 class="titledesc">This Is A Rest Day!<br/>Enjoy!</h2>
+                            <br/>
+                        }
+
+                        else
+                        {
+
+                        }
+                        <div class="col-lg-12 descc">
+
+                            <span class="titledesc">Name: </span><span class="descc">@Html.DisplayFor(it => Model.Exc.ExName)</span><br/>
+                            <span class="titledesc">Duration: </span><span class="descc">@Html.DisplayFor(it => Model.Exc.ExDuration)</span><br/>
+                            <span class="titledesc">Equipments: </span><span class="descc">@Html.DisplayFor(it => Model.Exc.ExEquip)</span><br/>
+                            <span class="titledesc">Skill Level: </span><span class="descc">@Html.DisplayFor(it => Model.Exc.ExSkill)</span><br/>
+                            <span class="titledesc">Type: </span><span class="descc">@Html.DisplayFor(it => Model.Exc.ExType).</span><br/>
+                            <span class="titledesc">Targeted Body Parts: </span><span class="descc">@Html.DisplayFor(it => Model.Exc.ExBodyPart)</span><br/><br/>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                @*GIF*@
+                                <div class="row">
+                                    <div class="row col-lg-4 stepimg">
+                                    </div>
+
+                                    <div class="col-lg-4 stepimg">
+                                        <video class="img-responsive" style="width: 100%; border-radius: 20px" controls>
+                                            <source src="@Url.Content(Model.Exc.ExVideo)" type="video/mp4">
+
+                                        </video>
+                                    </div>
+
+                                    <div class="col-lg-4 stepimg">
+                                    </div>
+                                </div>
+                                @*Description*@
+                                <h3 class="titledesc">Description:</h3><br/>
+                                <p class="workoutdesc">@Html.DisplayFor(it => Model.Exc.ExDesc)</p>
+
+
+                                @*Steps images*@
+                                <div class="row">
+                                    <div class="row col-lg-4">
+                                        <h4 class="mm">Step1</h4>
+                                        <img src="@Url.Content(Model.Exc.ExStepOne)" class="img-responsive" style="width: 100%; border-radius: 10px;" alt="Image">
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <h4 class="mm">Step2</h4>
+                                        <img src="@Url.Content(Model.Exc.ExStepTwo)" class="img-responsive" style="width: 100%; border-radius: 10px;" alt="Image">
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+                                    <h2 class="iconfinish">Click to @if (Model.wnum == Model.TotalExc)
+                                                                    {<span> finish workout for today!</span>}
+                                                                    else
+                                                                    {<span> see next excercise!</span>}</h2>
+                                    @if (Model.wnum == Model.TotalExc)
+                                    {
+
+                                        <a href="@Url.Action("CompletedWorkout", "Excercises", new {wid = Model.wId})" class="btn btn-primary btn-block finishbu" id="finish">Finish</a>
+
+
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("WorkoutPage", "Excercises", new {wid = Model.wId, wnum = (Model.wnum + 1)})" class="btn btn-primary btn-block finishbu">Next</a>
+                                    }
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    }
+</body>
+
+
+
+    <!--copy-->
+<div class="copy-section wow fadeInDownBig animated animated" data-wow-delay="0.4s">
+    <div class="container">
+        <div class="social-icons">
+            <a href="#"><i class="icon"></i></a>
+            <a href="#"><i class="icon1"></i></a>
+            <a href="#"><i class="icon2"></i></a>
+            <a href="#"><i class="icon3"></i></a>
+        </div>
+        <p>&copy; 2017 GoFitLife | Zaid & Waleed</p>
+   </div>
+</div>
+<!--copy-->
+

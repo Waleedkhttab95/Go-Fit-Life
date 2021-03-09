@@ -1,0 +1,235 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>Defult</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>Defult</PackageId>
+    <RuntimeFrameworkVersion>1.0.4</RuntimeFrameworkVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Remove="Properties\PublishProfiles\Defult20170416034933 - Web Deploy.pubxml" />
+    <None Remove="Properties\PublishProfiles\Defult20170508124712 - Web Deploy.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\imageExcercise\vacation.png" />
+    <Content Include="wwwroot\videoExcercise\Barbell Bench Press.mp4" />
+    <Content Include="wwwroot\videoExcercise\Barbell Step Ups.mp4" />
+    <Content Include="wwwroot\videoExcercise\barbelldeadfit.mp4" />
+    <Content Include="wwwroot\videoExcercise\BarbellSquat.mp4" />
+    <Content Include="wwwroot\videoExcercise\BarbellWalking.mp4" />
+    <Content Include="wwwroot\videoExcercise\bentover.mp4" />
+    <Content Include="wwwroot\videoExcercise\Cable Crossover.mp4" />
+    <Content Include="wwwroot\videoExcercise\dipmachine.mp4" />
+    <Content Include="wwwroot\videoExcercise\Dumbbell Incline Row.mp4" />
+    <Content Include="wwwroot\videoExcercise\DumbbellFlyes.mp4" />
+    <Content Include="wwwroot\videoExcercise\dumbell shoulder press.mp4" />
+    <Content Include="wwwroot\videoExcercise\dumbellbenchpress.mp4" />
+    <Content Include="wwwroot\videoExcercise\Freehand Jump Squat.mp4" />
+    <Content Include="wwwroot\videoExcercise\goblet squat.mp4" />
+    <Content Include="wwwroot\videoExcercise\InclineDumbbellPress.mp4" />
+    <Content Include="wwwroot\videoExcercise\legpress.mp4" />
+    <Content Include="wwwroot\videoExcercise\LeverageHighRow.mp4" />
+    <Content Include="wwwroot\videoExcercise\lyinglegcurls.mp4" />
+    <Content Include="wwwroot\videoExcercise\pullups.mp4" />
+    <Content Include="wwwroot\videoExcercise\SeatedCableRows.mp4" />
+    <Content Include="wwwroot\videoExcercise\stepmil.mp4" />
+    <Content Include="wwwroot\videoExcercise\straightarmdumbellpullover.mp4" />
+    <Content Include="wwwroot\videoExcercise\T-bar.mp4" />
+    <Content Include="wwwroot\videoExcercise\treadmill.mp4" />
+    <Content Include="wwwroot\videoExcercise\Triceps Pushdown .mp4" />
+    <Content Include="wwwroot\videoExcercise\Underhand Cable Pulldowns.mp4" />
+    <Content Include="wwwroot\videoExcercise\widegrippulldown.mp4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="wwwroot\**\*">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bower" Version="1.3.11" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Rewrite" Version="1.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Routing" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="1.1.1" />
+    <PackageReference Include="AutoMapper" Version="6.0.2" />
+    <PackageReference Include="jQuery" Version="3.1.1" />
+    <PackageReference Include="jquery.datatables" Version="1.10.12" />
+    <PackageReference Include="Microsoft.TypeScript.Compiler" Version="2.2.1" />
+    <PackageReference Include="DataTables.AspNet.Core" Version="2.0.2" />
+  </ItemGroup>
+
+  <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
+    <Exec Command="bower install" />
+    <Exec Command="dotnet bundle" />
+  </Target>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.2.301" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\imageExcercise\Ab Roller1.jpg" />
+    <None Include="wwwroot\imageExcercise\Ab Roller2.jpg" />
+    <None Include="wwwroot\imageExcercise\arnoldpress1.jpg" />
+    <None Include="wwwroot\imageExcercise\arnoldpress2.jpg" />
+    <None Include="wwwroot\imageExcercise\Barbell Bench Press1.jpg" />
+    <None Include="wwwroot\imageExcercise\Barbell Bench Press2.jpg" />
+    <None Include="wwwroot\imageExcercise\Barbell Incline Bench Press Medium-Grip1.jpg" />
+    <None Include="wwwroot\imageExcercise\Barbell Incline Bench Press Medium-Grip2.jpg" />
+    <None Include="wwwroot\imageExcercise\Barbell Lunge1.jpg" />
+    <None Include="wwwroot\imageExcercise\Barbell Lunge2.jpg" />
+    <None Include="wwwroot\imageExcercise\Barbell Step Ups1.jpg" />
+    <None Include="wwwroot\imageExcercise\Barbell Step Ups2.jpg" />
+    <None Include="wwwroot\imageExcercise\barbelldeadfit1.jpg" />
+    <None Include="wwwroot\imageExcercise\barbelldeadfit2.jpg" />
+    <None Include="wwwroot\imageExcercise\barbell_squat1.jpg" />
+    <None Include="wwwroot\imageExcercise\barbell_squat2.jpg" />
+    <None Include="wwwroot\imageExcercise\barbell_walking1.jpg" />
+    <None Include="wwwroot\imageExcercise\barbell_walking2.jpg" />
+    <None Include="wwwroot\imageExcercise\bentover1.jpg" />
+    <None Include="wwwroot\imageExcercise\bentover2.jpg" />
+    <None Include="wwwroot\imageExcercise\bodyweightsquat1.jpg" />
+    <None Include="wwwroot\imageExcercise\bodyweightsquat2.jpg" />
+    <None Include="wwwroot\imageExcercise\bycle1.jpg" />
+    <None Include="wwwroot\imageExcercise\bycle2.jpg" />
+    <None Include="wwwroot\imageExcercise\Cable Crossover1.jpg" />
+    <None Include="wwwroot\imageExcercise\Cable Crossover2.jpg" />
+    <None Include="wwwroot\imageExcercise\Cable Rope Overhead Triceps Extension1.jpg" />
+    <None Include="wwwroot\imageExcercise\Cable Rope Overhead Triceps Extension2.jpg" />
+    <None Include="wwwroot\imageExcercise\cablereardeltfly1.jpg" />
+    <None Include="wwwroot\imageExcercise\cablereardeltfly2.jpg" />
+    <None Include="wwwroot\imageExcercise\Close-Grip Barbell Bench Press1.jpg" />
+    <None Include="wwwroot\imageExcercise\Close-Grip Barbell Bench Press2.jpg" />
+    <None Include="wwwroot\imageExcercise\Decline Dumbbell Bench Press1.jpg" />
+    <None Include="wwwroot\imageExcercise\Decline Dumbbell Bench Press2.jpg" />
+    <None Include="wwwroot\imageExcercise\dipmachine1.jpg" />
+    <None Include="wwwroot\imageExcercise\dipmachine2.jpg" />
+    <None Include="wwwroot\imageExcercise\Dumbbell Bicep Curl1.jpg" />
+    <None Include="wwwroot\imageExcercise\Dumbbell Bicep Curl2.jpg" />
+    <None Include="wwwroot\imageExcercise\Dumbbell Incline Row1.jpg" />
+    <None Include="wwwroot\imageExcercise\Dumbbell Incline Row2.jpg" />
+    <None Include="wwwroot\imageExcercise\DumbbellFlyes1.jpg" />
+    <None Include="wwwroot\imageExcercise\DumbbellFlyes2.jpg" />
+    <None Include="wwwroot\imageExcercise\DumbbellRearLunge1.jpg" />
+    <None Include="wwwroot\imageExcercise\DumbbellRearLunge2.jpg" />
+    <None Include="wwwroot\imageExcercise\dumbbellShoulderPress1.jpg" />
+    <None Include="wwwroot\imageExcercise\dumbbellShoulderPress2.jpg" />
+    <None Include="wwwroot\imageExcercise\dumbellbenchpress1.jpg" />
+    <None Include="wwwroot\imageExcercise\dumbellbenchpress2.jpg" />
+    <None Include="wwwroot\imageExcercise\Exercise Ball Pull-In1.jpg" />
+    <None Include="wwwroot\imageExcercise\Exercise Ball Pull-In2.jpg" />
+    <None Include="wwwroot\imageExcercise\Face Pull1.jpg" />
+    <None Include="wwwroot\imageExcercise\Face Pull2.jpg" />
+    <None Include="wwwroot\imageExcercise\Farmers Walk1.jpg" />
+    <None Include="wwwroot\imageExcercise\Farmers Walk2.jpg" />
+    <None Include="wwwroot\imageExcercise\Flat Bench Cable Flyes1.jpg" />
+    <None Include="wwwroot\imageExcercise\Flat Bench Cable Flyes2.jpg" />
+    <None Include="wwwroot\imageExcercise\Floor Glute-Ham Raise1.jpg" />
+    <None Include="wwwroot\imageExcercise\Floor Glute-Ham Raise2.jpg" />
+    <None Include="wwwroot\imageExcercise\Freehand Jump Squat1.jpg" />
+    <None Include="wwwroot\imageExcercise\Freehand Jump Squat2.jpg" />
+    <None Include="wwwroot\imageExcercise\frontbarbellsquat1.jpg" />
+    <None Include="wwwroot\imageExcercise\frontbarbellsquat2.jpg" />
+    <None Include="wwwroot\imageExcercise\frontplateraise1.jpg" />
+    <None Include="wwwroot\imageExcercise\frontplateraise2.jpg" />
+    <None Include="wwwroot\imageExcercise\gobletsquat1.jpg" />
+    <None Include="wwwroot\imageExcercise\gobletsquat2.jpg" />
+    <None Include="wwwroot\imageExcercise\hacksquat1.jpg" />
+    <None Include="wwwroot\imageExcercise\hacksquat2.jpg" />
+    <None Include="wwwroot\imageExcercise\Hammer Curls1.jpg" />
+    <None Include="wwwroot\imageExcercise\Hammer Curls2.jpg" />
+    <None Include="wwwroot\imageExcercise\Incline DumbbellPress1.jpg" />
+    <None Include="wwwroot\imageExcercise\Incline DumbbellPress2.jpg" />
+    <None Include="wwwroot\imageExcercise\Kettlebell One-Legged Deadlift1.jpg" />
+    <None Include="wwwroot\imageExcercise\Kettlebell One-Legged Deadlift2.jpg" />
+    <None Include="wwwroot\imageExcercise\legpress1.jpg" />
+    <None Include="wwwroot\imageExcercise\legpress2.jpg" />
+    <None Include="wwwroot\imageExcercise\Leverage High Row1.jpg" />
+    <None Include="wwwroot\imageExcercise\Leverage High Row2.jpg" />
+    <None Include="wwwroot\imageExcercise\lyinglegcurls1.jpg" />
+    <None Include="wwwroot\imageExcercise\lyinglegcurls2.jpg" />
+    <None Include="wwwroot\imageExcercise\One-Arm Dumbbell Row1.jpg" />
+    <None Include="wwwroot\imageExcercise\One-Arm Dumbbell Row2.jpg" />
+    <None Include="wwwroot\imageExcercise\One-Arm Side Deadlift1.jpg" />
+    <None Include="wwwroot\imageExcercise\One-Arm Side Deadlift2.jpg" />
+    <None Include="wwwroot\imageExcercise\onelegbarbellsquat1.jpg" />
+    <None Include="wwwroot\imageExcercise\onelegbarbellsquat2.jpg" />
+    <None Include="wwwroot\imageExcercise\Pallof Press1.jpg" />
+    <None Include="wwwroot\imageExcercise\Pallof Press2.jpg" />
+    <None Include="wwwroot\imageExcercise\pullups1.jpg" />
+    <None Include="wwwroot\imageExcercise\pullups2.jpg" />
+    <None Include="wwwroot\imageExcercise\pushups1.jpg" />
+    <None Include="wwwroot\imageExcercise\pushups2.jpg" />
+    <None Include="wwwroot\imageExcercise\romandeadlift1.jpg" />
+    <None Include="wwwroot\imageExcercise\romandeadlift2.jpg" />
+    <None Include="wwwroot\imageExcercise\Rope Straight-Arm Pulldown1.jpg" />
+    <None Include="wwwroot\imageExcercise\Rope Straight-Arm Pulldown2.jpg" />
+    <None Include="wwwroot\imageExcercise\Seated Bent-Over Rear Delt Raise1.jpg" />
+    <None Include="wwwroot\imageExcercise\Seated Bent-Over Rear Delt Raise2.jpg" />
+    <None Include="wwwroot\imageExcercise\Seated Calf Raise1.jpg" />
+    <None Include="wwwroot\imageExcercise\Seated Calf Raise2.jpg" />
+    <None Include="wwwroot\imageExcercise\SeatedCableRows1.jpg" />
+    <None Include="wwwroot\imageExcercise\SeatedCableRows2.jpg" />
+    <None Include="wwwroot\imageExcercise\seatedlegcurl1.jpg" />
+    <None Include="wwwroot\imageExcercise\seatedlegcurl2.jpg" />
+    <None Include="wwwroot\imageExcercise\Standing Alternating Dumbbell Press1.jpg" />
+    <None Include="wwwroot\imageExcercise\Standing Alternating Dumbbell Press2.jpg" />
+    <None Include="wwwroot\imageExcercise\Standing Cable Wood Chop1.jpg" />
+    <None Include="wwwroot\imageExcercise\Standing Cable Wood Chop2.jpg" />
+    <None Include="wwwroot\imageExcercise\Standing Calf Raises1.jpg" />
+    <None Include="wwwroot\imageExcercise\Standing Calf Raises2.jpg" />
+    <None Include="wwwroot\imageExcercise\stepmil1.jpg" />
+    <None Include="wwwroot\imageExcercise\stepmil2.jpg" />
+    <None Include="wwwroot\imageExcercise\straightarm1.jpg" />
+    <None Include="wwwroot\imageExcercise\straightarm2.jpg" />
+    <None Include="wwwroot\imageExcercise\t-bar1.jpg" />
+    <None Include="wwwroot\imageExcercise\t-bar2.jpg" />
+    <None Include="wwwroot\imageExcercise\treadmill1.jpg" />
+    <None Include="wwwroot\imageExcercise\treadmill2.jpg" />
+    <None Include="wwwroot\imageExcercise\Triceps Overhead Extension with Rope1.jpg" />
+    <None Include="wwwroot\imageExcercise\Triceps Overhead Extension with Rope2.jpg" />
+    <None Include="wwwroot\imageExcercise\Triceps Pushdown 1.jpg" />
+    <None Include="wwwroot\imageExcercise\Triceps Pushdown 2.jpg" />
+    <None Include="wwwroot\imageExcercise\Underhand Cable Pulldowns1.jpg" />
+    <None Include="wwwroot\imageExcercise\Underhand Cable Pulldowns2.jpg" />
+    <None Include="wwwroot\imageExcercise\widegrippulldown1.jpg" />
+    <None Include="wwwroot\imageExcercise\widegrippulldown2.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
+</Project>

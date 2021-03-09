@@ -1,0 +1,365 @@
+﻿@model Defult.Models.User
+
+
+<title>GoFitLife</title>
+<!---css--->
+<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="/css/style.css" rel='stylesheet' type='text/css' />
+<link href="/css/our_style.css" rel='stylesheet' type='text/css' />
+
+<!---css--->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!---js--->
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<!---js--->
+<!--web-fonts-->
+<link href="//fonts.googleapis.com/css?family=Ubuntu+Condensed" rel='stylesheet' type='text/css'>
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic" rel='stylesheet' type='text/css'>
+<link href="//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic" rel='stylesheet' type='text/css'>
+<!--//web-fonts-->
+<script src="/js/responsiveslides.min.js"></script>
+
+<!--JS for animate-->
+<link href="/css/animate.css" rel="stylesheet" type="text/css" media="all">
+<script src="/js/wow.min.js"></script>
+<script>
+    new WOW().init();
+</script>
+<!--//end-animate-->
+<!---header--->
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#42a5f5 ">
+    <div class="container">
+        <div class="navbar-header wow fadeInLeft animated animated" data-wow-delay="0.4s">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <h1><a class="navbar-brand" asp-action="UserIndex"><img src="/images/e.png" /> GoFitLife</a></h1>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" style="background-color:#42a5f5 ">
+            <ul class="nav navbar-nav navbar-right wow fadeInRight animated animated" data-wow-delay="0.4s" style="background-color:#42a5f5 ">
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Excercises" asp-action="Excercisers"><span data-letters="My Excercise">My Excercise</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-action="Foods"><span data-letters="My Nutrition">My Nutrition</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-controller="Excercises" asp-action="RandomExcercises"><span data-letters="Random Excercise">Random Excercise</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-action="Manage"><span data-letters="My Profile">My Profile</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-action="LogOut"><span data-letters="Logout">Logout</span></a></li>
+                <li><a style="background-color:#42a5f5 " class="nav-in" asp-action="UserIndex"><span data-letters="Home">Home</span></a></li>
+
+
+
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<!-- Body  -->
+
+
+
+@section styles {
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.css" />
+    <link href="~/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    <link href="~/css/dataTables.jqueryui.css" rel="stylesheet" />
+    <link href="~/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/css/Shipe.css" rel="stylesheet" />
+    <link href="~/css/our_style.css" rel="stylesheet" />
+}
+
+<body class="bccol">
+    <div class="banner wow fadeInDownBig animated animated" data-wow-delay="0.4s">
+        <div class="container">
+            <h2>Nutrition Calculation</h2>
+        </div>
+    </div>
+
+
+    <div style="width:1350px; height: 300px">
+
+        <div class="col-md-3 fit-grid wow fadeInDownBig animated " data-wow-delay="0.4s">
+
+            <div class="fit-left hvr-bounce-to-bottom" style="width: 700px;
+    height: 200px;
+    font-size: 19px;
+    align-content: center;">
+                <h3>calories :</h3>
+                <h3 id="calo"></h3>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-3 fit-grid wow fadeInDownBig animated " data-wow-delay="0.4s">
+
+            <div class="fit-left hvr-bounce-to-bottom" style="width: 700px;
+    height: 200px;
+    font-size: 19px;
+    align-content: center;">
+                <h3>Protein :</h3>
+                <h3 id="pro"></h3>
+            </div>
+        </div>
+
+
+
+        <div class="col-md-3 fit-grid wow fadeInDownBig animated " data-wow-delay="0.4s">
+
+            <div class="fit-left hvr-bounce-to-bottom" style="width: 700px;
+    height: 200px;
+    font-size: 19px;
+    align-content: center;">
+                <h3>carbohydrates :</h3>
+                <h3 id="hcarb"></h3>
+            </div>
+        </div>
+
+        <div class="col-md-3 fit-grid wow fadeInDownBig animated " data-wow-delay="0.4s">
+
+            <div class="fit-left hvr-bounce-to-bottom" style="width: 700px;
+                                                                   height: 200px;
+                                                                   font-size: 19px;
+                                                                   align-content: center;">
+                <h3>Healthy Fat :</h3>
+                <h3 id="hfat"></h3>
+            </div>
+        </div>
+
+        <div class="col-md-3 fit-grid wow fadeInDownBig animated " data-wow-delay="0.4s">
+
+
+        </div>
+    </div>
+
+
+
+    <div class="row">
+
+
+
+
+
+        <div class="col-md-12" style="margin-top: 20px">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Foods</h3>
+                </div>
+
+                <table id="tab" class="table table-striped table-bordered table-hover responsive" width="100%" style="margin-top: 30px">
+
+                    <thead class="thin-border-bottom">
+
+                        <tr>
+
+                            <th>Food</th>
+
+                            <th>Calore</th>
+
+                            <th>Protin</th>
+
+                            <th>Carbohydrate</th>
+
+                            <th>Healthy Fats</th>
+
+                            <th>
+                                calculate calories
+                            </th>
+
+                            <th>
+                                calculate Protein
+                            </th>
+
+                            <th>
+                                calculate carbohydrates
+                            </th>
+
+                            <th>
+                                calculate Healthy Fat
+                            </th>
+
+                            <th>
+                                Add To List
+                            </th>
+                        </tr>
+
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <ul id="Food" class="list-group"></ul>
+
+
+        </div>
+
+
+    </div>
+</body>
+<!--copy-->
+<div class="copy-section wow fadeInDownBig animated animated" data-wow-delay="0.4s">
+    <div class="container">
+        <div class="social-icons">
+            <a href="#"><i class="icon"></i></a>
+            <a href="#"><i class="icon1"></i></a>
+            <a href="#"><i class="icon2"></i></a>
+            <a href="#"><i class="icon3"></i></a>
+        </div>
+        <p>&copy; 2017 GoFitLife | Zaid & Waleed</p>
+    </div>
+</div>
+<!--copy-->
+@section scripts{
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
+
+    <script>
+        var cal=@Model.Calories;
+        var pro=@Model.Protin;
+        var carb=@Model.Carb;
+        var ft=@Model.Fat;
+
+        document.getElementById("calo").innerHTML = cal;
+        document.getElementById("pro").innerHTML = pro;
+        document.getElementById("hcarb").innerHTML = carb;
+        document.getElementById("hfat").innerHTML = ft;
+        $(document).ready(function() {
+
+                $("#tab").DataTable({
+                    ajax: {
+                        url: "/api/Foods",
+                        dataSrc: "",
+                        method: "GET"
+                    },
+                    columns: [
+//                    {
+//                        data: "Foodname"
+//            },
+                    {
+                        data: "Fcalore"
+                    },
+                    {
+                        data: "Fproten"
+                    },
+                    {
+                        data: "Fcarb"
+                    },
+                    {
+                        data: "Ffat"
+
+                    },
+                    {
+                        data: "Fcalore",
+                        render: function(data) {
+                            return "<button class='btn-link js-addc' data-Fcalore=" + data + "> calculate </button>";
+                        }
+                    },
+                        {
+                            data: "Fproten",
+                            render: function(data) {
+                                return "<button class='btn-link js-addp' data-Fprotein=" + data + "> calculate </button>";
+                            }
+                        },
+                         {
+                             data: "Fcarb",
+                             render: function(data) {
+                                 return "<button class='btn-link js-addca' data-Fcarb=" + data + "> calculate </button>";
+                             }
+                         },
+                          {
+                              data: "Ffat",
+                              render: function(data) {
+                                  return "<button class='btn-link js-addf' data-Ffat=" + data + "> calculate </button>";
+                              }
+                          },
+                           {
+                               data: "Foodname",
+                               render: function(data) {
+                                   return "<button class='btn-link js-addn' data-Fname=" + data + "> Add </button>";
+                               }
+                           }
+                ]
+
+                });
+
+            $("#tab").on("click",
+                ".js-addn",
+                function() {
+                    var button = $(this);
+                    var Fm = button.attr("data-Fname");
+
+                    $("#Food").append("<li class='list-group-item'  style='background-color: lavender'>"+Fm+"</li>");
+
+
+                });
+
+            $("#tab").on("click",
+              ".js-addc",
+              function() {
+                  var button = $(this);
+
+                  var cl = button.attr("data-Fcalore");
+                  cal = cal - cl;
+                  document.getElementById("calo").innerHTML =cal;
+
+
+
+              });
+
+            $("#tab").on("click",
+              ".js-addp",
+              function() {
+                  var button = $(this);
+
+                  var cl = button.attr("data-Fprotein");
+                  pro = pro - cl;
+                  document.getElementById("pro").innerHTML = pro;
+
+
+
+              });
+
+            $("#tab").on("click",
+              ".js-addca",
+              function() {
+                  var button = $(this);
+
+                  var cl = button.attr("data-Fcarb");
+                  carb = carb - cl;
+                  document.getElementById("hcarb").innerHTML = carb;
+
+
+
+              });
+
+            $("#tab").on("click",
+              ".js-addf",
+              function() {
+                  var button = $(this);
+
+                  var cl = button.attr("data-Ffat");
+                  ft = ft - cl;
+                  document.getElementById("hfat").innerHTML = ft;
+
+
+
+              });
+
+        });
+    </script>
+
+
+
+}
+
+
